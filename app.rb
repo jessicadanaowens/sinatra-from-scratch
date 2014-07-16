@@ -15,7 +15,7 @@ class App < Sinatra::Application
 
   get '/' do
     "hello"
-    erb :homepage
+    erb :homepage, :locals=>{:member_info=>members}
   end
 
   post '/signup' do
@@ -23,5 +23,13 @@ class App < Sinatra::Application
     flash[:notice] = "You Rock!!!"
   redirect '/'
   end
+
+  private
+
+  def members
+    @database_connection.sql("SELECT name from users")
+  end
+
+
 
 end

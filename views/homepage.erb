@@ -1,5 +1,13 @@
 <%= flash[:notice] if flash[:notice] %>
 
+<h1>Congrats! You're now a member of the team!</h1>
+<ul>
+  <% member_info.each do |user|%>
+  <li><%= user['name'] %></li>
+  <% end %>
+</ul>
+
+
 <form method="post" action="/signup">
   <ul>
     <li>
