@@ -20,7 +20,8 @@ class App < Sinatra::Application
 
   post '/signup' do
     @database_connection.sql("INSERT INTO users (name, email) VALUES ('#{params[:name]}', '#{params[:email]}')")
-
+    flash[:notice] = "You Rock!!!"
+  redirect '/'
   end
 
 end
